@@ -1,23 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <title>Mon compte</title>
+<head th:insert="common/fragments/header.html :: header">
 </head>
 
 <body>
-    <header th:replace="common/fragments/header :: header"></header>
-
+    <nav th:insert="common/fragments/menu.html :: menu"></nav>
     <div class="container">
-        <h1>Mon compte</h1>
-    </div>
-
+        <h1 class="text-center py-5">Mon compte</h1>
+        <div class="tab">
+            <button class="btn btn-outline-light" onclick="openCity(event, 'signin')">Creer un compte</button>
+            <button class="btn btn-outline-light" onclick="openCity(event, 'login')">Se connecter</button>
+            <button type="button" class="btn btn-outline-light" onclick="openCity(event, 'reset')">Réinitialiser le mot de passe</button>
+          </div>
+          
+          <!-- Tab content -->
+          <div id="signin" class="tabcontent">
+            <div th:insert="/common/fragments/form/create.html :: create"></div>
+          </div>
+          
+          <div id="login" class="tabcontent">
+            <div th:insert="/common/fragments/form/login.html :: login"></div>
+          </div>
+          
+          <div id="reset" class="tabcontent">
+            <div th:insert="/common/fragments/form/reset.html :: reset"></div>
+          </div>
     <footer th:replace="common/fragments/footer :: bottom"></footer>
+
+    <script>
+        function openCity(evt, cityName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+  
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+  
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+  
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+    </script>
 </body>
 
 </html>
