@@ -8,9 +8,9 @@
     <nav th:insert="common/fragments/menu.html :: menu"></nav>
     <div class="container">
         <h1 class="text-center py-5">Mon compte</h1>
-        <div class="tab">
-            <button class="btn btn-outline-light" onclick="openCity(event, 'signin')">Creer un compte</button>
-            <button class="btn btn-outline-light" onclick="openCity(event, 'login')">Se connecter</button>
+        <div class="tab btn-group">
+            <button type="button" class="btn btn-outline-light" onclick="openCity(event, 'signin')">Creer un compte</button>
+            <button type="button" class="btn btn-outline-light" onclick="openCity(event, 'login')">Se connecter</button>
             <button type="button" class="btn btn-outline-light" onclick="openCity(event, 'reset')">Réinitialiser le mot de passe</button>
           </div>
           
